@@ -127,7 +127,6 @@ test_source_distribution() {
   sed \
     -i.bak \
     -E \
-    -e 's/^arrow = "([^"]*)"/arrow = { version = "\1", path = "..\/arrow" }/g' \
     -e 's/^parquet = "([^"]*)"/parquet = { version = "\1", path = "..\/parquet" }/g' \
     */Cargo.toml
 
