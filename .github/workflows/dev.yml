@@ -15,17 +15,22 @@
 # specific language governing permissions and limitations
 # under the License.
 
-notifications:
-  commits:      commits@arrow.apache.org
-  issues:       github@arrow.apache.org
-  pullrequests: github@arrow.apache.org
-  jira_options: link label worklog
-github:
-  description: "Experimental Rust implementation of Parquet"
-  homepage: https://arrow.apache.org/
-  enabled_merge_buttons:
-    squash: true
-    merge: false
-    rebase: false
-  features:
-    issues: true
+name: Dev
+
+on:
+  # always trigger
+  push:
+  pull_request:
+
+jobs:
+  rat:
+    name: Release Audit Tool (RAT)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Audit licenses
+        run: ./dev/release/run-rat.sh .
