@@ -14,18 +14,22 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+[package]
+name = "parquet-tools"
+version = "0.1.0"
+authors = ["Fernando Herrera <fernando.j.herrera@gmail.com>"]
+edition = "2018"
 
-notifications:
-  commits:      commits@arrow.apache.org
-  issues:       github@arrow.apache.org
-  pullrequests: github@arrow.apache.org
-  jira_options: link label worklog
-github:
-  description: "Experimental Rust implementation of Parquet"
-  homepage: https://arrow.apache.org/
-  enabled_merge_buttons:
-    squash: true
-    merge: false
-    rebase: false
-  features:
-    issues: true
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "parquet_tools"
+path = "src/lib/lib.rs"
+
+[[bin]]
+name = "parquet_tools"
+path = "src/main.rs"
+
+[dependencies]
+parquet2 = { version = "0.1", path = "../" }
+clap = {version = "2.33", features = ["yaml"]}

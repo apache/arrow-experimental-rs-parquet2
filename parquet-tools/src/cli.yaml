@@ -1,0 +1,54 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+name: parquet-tools
+version: "1.0"
+author: Fernando Herrera
+about: Tools to extract information from Parquet file
+args:
+    - file:
+        help: Parquet file to read
+        required: true
+        index: 1
+subcommands:
+    - rowcount:
+        about: number of rows from file
+    - meta:
+        about: meta information about the file
+        args:
+            - extra:
+                short: e
+                long: extra
+                help: shows extra information from the file
+            - stats:
+                short: s
+                long: stats
+                help: shows column stats
+    - dump:
+        about: dumps data from column
+        args:
+            - size:
+                short: s
+                long: size
+                help: sample size to be printed from page (default 5)
+                takes_value: true
+            - columns:
+                short: c
+                long: columns
+                multiple: true
+                help: columns to be printed
+                takes_value: true
+

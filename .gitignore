@@ -1,0 +1,9 @@
+target
+Cargo.lock
+venv
+fixtures
+
+# when rat is ran, these are created
+apache-rat-0.13.jar
+filtered_rat.txt
+rat.txt
